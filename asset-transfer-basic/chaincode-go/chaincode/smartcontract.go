@@ -16,22 +16,24 @@ type SmartContract struct {
 //Insert struct field in alphabetic order => to achieve determinism accross languages
 // golang keeps the order when marshal to json but doesn't order automatically
 type Asset struct {
-	AppraisedValue int    `json:"AppraisedValue"`
-	Color          string `json:"Color"`
-	ID             string `json:"ID"`
-	Owner          string `json:"Owner"`
-	Size           int    `json:"Size"`
+	ID             	 string `json:"ID"`
+	SparepartNumber  string `json:"SparepartNumber"`
+	SparepartName 	 string `json:"SparepartName"`
+	PIC          	 string `json:"PIC"`
+	From          	 string `json:"From"`
+	To          	 string `json:"To"`
+	// Size           int    `json:"Size"`
 }
 
 // InitLedger adds a base set of assets to the ledger
 func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
 	assets := []Asset{
-		{ID: "asset1", Color: "blue", Size: 5, Owner: "Tomoko", AppraisedValue: 300},
-		{ID: "asset2", Color: "red", Size: 5, Owner: "Brad", AppraisedValue: 400},
-		{ID: "asset3", Color: "green", Size: 10, Owner: "Jin Soo", AppraisedValue: 500},
-		{ID: "asset4", Color: "yellow", Size: 10, Owner: "Max", AppraisedValue: 600},
-		{ID: "asset5", Color: "black", Size: 15, Owner: "Adriana", AppraisedValue: 700},
-		{ID: "asset6", Color: "white", Size: 15, Owner: "Michel", AppraisedValue: 800},
+		{ID: "po1", SparepartNumber: "888-1234-123", SparepartName: "Brake", PIC: "Nadeem Abdur Rasheed", From: "A", To: "B"},
+		{ID: "po2", SparepartNumber: "888-1234-123", SparepartName: "Brake", PIC: "Christopher Richardo", From: "B", To: "C"},
+		{ID: "po3", SparepartNumber: "777-1234-111", SparepartName: "Front Wheel", PIC: "TB. Naufal Arya Maulana", From: "C", To: "B"},
+		// {ID: "asset4", Color: "yellow", Size: 10, Owner: "Max", AppraisedValue: 600},
+		// {ID: "asset5", Color: "black", Size: 15, Owner: "Adriana", AppraisedValue: 700},
+		// {ID: "asset6", Color: "white", Size: 15, Owner: "Michel", AppraisedValue: 800},
 	}
 
 	for _, asset := range assets {
